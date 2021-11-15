@@ -64,7 +64,7 @@ function TimeseriesChart({series}) {
 
     return (
         <div id="chart">
-            <ReactApexChart options={options} series={series} type="area" height={400} />
+            <ReactApexChart options={options} series={series} type="area" height={398} />
         </div>
     )
 }

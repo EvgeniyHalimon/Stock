@@ -33,7 +33,7 @@
               options={options}
               series={series}
               type="candlestick"
-              height={405}
+              height={400}
             />
           </div>
         )

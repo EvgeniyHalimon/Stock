@@ -14,8 +14,6 @@ const handleSubmit = (e) => {
     e.preventDefault()
     store.changeUrl(store.symbol)
     store.changeOverviewUrl(store.symbol)
-    getData(store.symbol)
-    getCompany(store.symbol)
 }
 
 const API_KEY = 'TCJ4L6MNRZLNYVCB'
@@ -37,7 +35,8 @@ async function getData(symbol){
 }
 
 async function getCompany(symbol){
-    const company = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY2}`)
+    const company = await axios.get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY2}`)
+    console.log(company.data);
     store.setDataCompany(company.data)
 } 
 
@@ -70,6 +69,7 @@ function ChooseSymbol(){
         )
     })
 
+    console.log(timeSeries);
 
     return(
         <Container>
@@ -93,8 +93,8 @@ function ChooseSymbol(){
             <Container style={{display: 'flex'}}>
                     <CompanyCard data={store.companyData}/>
                     <Container>
-                        <MarketChart series={series}/>
-                        <CandleStickChart series={timeSeries}/>
+                        <MarketChart series={timeSeries}/>
+                        <CandleStickChart series={series}/>
                     </Container>
                 </Container>
         </Container>
